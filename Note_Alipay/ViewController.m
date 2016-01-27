@@ -84,6 +84,10 @@
     //通过请求服务器获取到，经过服务端处理后的订单信息
     NSString * orderString = @"";
     
+    //支付完成回调代理
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.alipayDelegate = self;
+    
     [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
         
         [self checkPaymentResultDic:resultDic];
